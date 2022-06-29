@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+import ChangeList from "./components/ChangeList";
 
 function App() {
+  const todolistReducer = useSelector((state) => state.todolistReducer);
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 801px)",
+  });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 800px)" });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {isDesktopOrLaptop && (
+        <div
+          className="App container-fluid d-flex justify-content-center border p-5 bg-dark text-white text-center"
+          style={{ height: "1500px" }}>
+          <div className="">
+            <h3 className="">ToDo List with Redux Toolkit</h3>
+            <TodoForm />
+            <TodoList todolistReducer={todolistReducer} />
+            <ChangeList />
+          </div>
+        </div>
+      )}
+      <>
+        {isTabletOrMobile && (
+          <div
+            className="App container-fluid d-flex justify-content-center border p-5 bg-dark text-white text-center"
+            style={{ height: "1000px" }}>
+            <div className="">
+              <h3 className="">ToDo List with Redux Toolkit</h3>
+              <TodoForm />
+              <TodoList todolistReducer={todolistReducer} />
+              <ChangeList />
+            </div>
+          </div>
+        )}
+      </>
+    </>
   );
 }
 

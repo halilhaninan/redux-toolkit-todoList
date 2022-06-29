@@ -1,0 +1,18 @@
+#todoList {
+  padding: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  background: white;
+  color: black;
+}
+.list {
+  margin-top: 50px;
+  list-style-type: none;
+  padding: 0;
+  inline-size: inherit;
+}
